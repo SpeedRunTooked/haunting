@@ -12,6 +12,8 @@ import Data.Ghost
 
 import System.Environment (getArgs)
 
+import Data.Ghost
+
 main :: IO ()
 main = do
   [f] <- getArgs
