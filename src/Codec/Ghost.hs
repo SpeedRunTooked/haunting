@@ -69,7 +69,7 @@ calcOffset i = (i - 1) * 15360 + 256
 getRawSlot :: Int64 -> ByteString -> RawSlot
 getRawSlot i bytes = RS head bod
  where
-   head = BS.take 128 (BS.drop (i - 1) bytes)
+   head = BS.take 128 (BS.drop (128 * (i - 1)) bytes)
    bod  = BS.take (60 * 256) (BS.drop (calcOffset i) bytes)
 
 parseRaw :: GhostFile Raw -> GhostFile Parsed
@@ -109,7 +109,7 @@ chars i = ["Mario", "Luigi", "Yoshi", "Toad"
           ,"D.K.", "Wario", "Peach", "Bowser"] !! (fromIntegral i)
 
 tracks :: IsString s => Word8 -> s
-tracks t = 
+tracks t =
   ["Luigi Raceway" ,"Moo Moo Farm" ,"Koopa Troopa Beach" ,"Kalimari Desert"
   ,"Toad's Turnpike" ,"Frappe Snowland" ,"Choco Mountain" ,"Mario Raceway"
   ,"Wario Stadium" ,"Sherbet Land" ,"Royal Raceway" ,"Bowser's Castle"
